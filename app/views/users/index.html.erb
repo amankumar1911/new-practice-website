@@ -1,1 +1,22 @@
-<h1>Aman</h1>
+<h1>Users Listing Page</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Address</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.name %></td>
+				<td><%= user.email %></td>
+				<td><%= user.address %></td>
+				<td>Placeholder</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
