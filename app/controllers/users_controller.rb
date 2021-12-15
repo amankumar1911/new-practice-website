@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 		# @users = User.new
 	end
 	def create
-		render plain: params[:user]
+		# render plain: params[:user]
+		@user = User.new(params.require(:user).permit(:name, :email, :address))
+		@user.save
+		redirect_to @user
 	end
 end
