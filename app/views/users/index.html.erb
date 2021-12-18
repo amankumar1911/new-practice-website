@@ -6,7 +6,7 @@
 			<th>Name</th>
 			<th>Email</th>
 			<th>Address</th>
-			<th>Actions</th>
+			<th colspan="3">Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -15,8 +15,16 @@
 				<td><%= user.name %></td>
 				<td><%= user.email %></td>
 				<td><%= user.address %></td>
-				<td>Placeholder</td>
+				<td><%= link_to 'Show', user_path(user) %></td>
+				<td><%= link_to 'Edit', edit_user_path(user)%></td>
+				<td><%= link_to 'Delete', user_path(user), method: :delete, data:{confirm: "Are you sure?"}%></td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
+
+<p>
+	<%= link_to 'Create New User', new_user_path %>
+</p>
+
+<%= link_to 'Home', root_path %>
