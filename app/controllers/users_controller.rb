@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+
+	before_action :set_user, only: [:show, :edit, :update, :destroy]
+
 	def index
 		@users = User.all
 	end
 
 	def show
-		@user = User.find(params[:id])
 	end
 
 	def new
@@ -13,12 +15,10 @@ class UsersController < ApplicationController
 
 
 	def edit
-		@user = User.find(params[:id])
 	end
 
 	def update
-		@user = User.find(params[:id])
-		if @user.update(params.require(:user).permit(:name, :email, :address))
+		if @user.update(user_param)
 			flash[:notice] = "User Edited Successfully"
 			redirect_to @user
 		else
@@ -27,14 +27,13 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		@user = User.find(params[:id])
 		@user.destroy
 		redirect_to users_path
 	end
 
 	def create
 		# render plain: params[:user]
-		@user = User.new(params.require(:user).permit(:name, :email, :address))
+		@user = User.new(user_param)
 		if @user.save
 			flash[:notice] = "User registered Successfully"
 			redirect_to @user
@@ -42,4 +41,15 @@ class UsersController < ApplicationController
 			render 'new'
 		end
 	end
+
+	private
+
+	def set_user
+		@user = User.find(params[:id])
+	end
+
+	def user_param
+		params.require(:user).permit(:name, :email, :address)
+	end
+
 end
