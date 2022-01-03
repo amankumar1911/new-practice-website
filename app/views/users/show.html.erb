@@ -1,4 +1,4 @@
-<h1 class="text-center mt-4"><%= @user.name %></h1>
+<h1 class="text-center mt-4"><%= @user.username %></h1>
 <div class="container">
 	<div class="row justify-content-md-center">
 		<div class="col-8 mt-4">
@@ -8,7 +8,6 @@
 			  </div>
 			  <div class="card-body">
 			    <h5 class="card-title"><%= @user.email %></h5>
-			    <div class="card-text"><%= simple_format(@user.address) %></div>
 			    <%= link_to	"Edit", edit_user_path(@user), class: "btn btn-info" %>
 			    <%= link_to	"Delete", user_path(@user), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-danger" %>
 			  </div>
