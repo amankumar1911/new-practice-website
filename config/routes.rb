@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :articles
-  resources :users #only: [:index, :show, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'pages#home'
-  get 'about', to: 'pages#about' 
+  get 'about', to: 'pages#about'
+  get 'signup', to: 'users#new' 
+  resources :users, except: [:new]
 end
