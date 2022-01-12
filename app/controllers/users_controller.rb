@@ -2,9 +2,9 @@ class UsersController < ApplicationController
 
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-	# def index
-	# 	@users = User.all
-	# end
+	def index
+		@users = User.all
+	end
 
 	# def show
 	# end
@@ -15,16 +15,18 @@ class UsersController < ApplicationController
 
 
 	# def edit
+	# 	@user = User.find(params[:id])
 	# end
 
-	# def update
-	# 	if @user.update(user_param)
-	# 		flash[:notice] = "User Edited Successfully"
-	# 		redirect_to @user
-	# 	else
-	# 		render 'edit'
-	# 	end
-	# end
+	def update
+		@user = User.find(params[:id])
+		if @user.update(user_param)
+			flash[:notice] = "User Edited Successfully"
+			redirect_to articles_path
+		else
+			render 'edit'
+		end
+	end
 
 	# def destroy
 	# 	@user.destroy
@@ -44,9 +46,9 @@ class UsersController < ApplicationController
 
 	private
 
-	# def set_user
-	# 	@user = User.find(params[:id])
-	# end
+	def set_user
+		@user = User.find(params[:id])
+	end
 
 	def user_param
 		params.require(:user).permit(:username, :email, :password)
