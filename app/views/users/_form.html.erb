@@ -28,9 +28,11 @@
           <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-outline-light btn-lg") %> 
         </div>
       <% end %>
-      <div class="pb-5">
-        <%= link_to '[ Return to User Listing ]', users_path, class: "text-info" %>
-      </div>
+      <% if logged_in? %>
+        <div class="pb-5">
+          <%= link_to '[ Return to User Listing ]', users_path, class: "text-info" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
