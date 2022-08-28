@@ -3,9 +3,8 @@
   <div class="row justify-content-md-center">
     <div class="col-8 mt-4">
       <div class="card text-center shadow mb-5 bg-white rounded">
-        <div class="card-header font-italic">
-          Added by <%= @article.user.username if @article.user %>
-          <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
+        <div class="article_image">
+          <%= image_tag @article.blog_image, class: "mw-100 h-auto" %>
         </div>
         <div class="card-body">
           <div class="card-text"><%= simple_format(@article.description) %></div>
@@ -15,6 +14,7 @@
           <% end %>
         </div>
         <div class="card-footer text-muted">
+          <p>Added by <%= @article.user.username if @article.user %></p>
           <small>created <%= time_ago_in_words(@article.created_at) %> ago, edited <%= time_ago_in_words(@article.updated_at) %> ago</small>
         </div>
       </div>
