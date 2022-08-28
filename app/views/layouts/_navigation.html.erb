@@ -15,7 +15,7 @@
           Article
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Add new article", new_article_path, class: "dropdown-item" %>
+          <%= link_to "Add new article", new_article_path, class: "dropdown-item" if logged_in? %>
           <%= link_to "View Articles", articles_path, class: "dropdown-item" %>
         </div>
       </li>
