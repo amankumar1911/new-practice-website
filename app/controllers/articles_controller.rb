@@ -53,7 +53,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
+      format.html { redirect_to articles_url, alert: "Article was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @article.user
+      if current_user != @article.user && !current_user.admin?
         flash[:alert] = "You can only edit or delete your own article"
         redirect_to @article
       end
